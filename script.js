@@ -47,3 +47,29 @@ const isValid = (str, int) => {
   
     return false;
   };  
+  const clearOutput = () => {
+    output.innerText = '';
+    output.classList.remove('alert');
+  };
+  
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    updateUI();
+  });
+  
+  convertButton.addEventListener('click', () => {
+    updateUI();
+  });
+  
+  const updateUI = () => {
+    const numStr = document.getElementById('number').value;
+    const int = parseInt(numStr, 10);
+  
+    output.classList.remove('hidden');
+  
+    clearOutput();
+  
+    if (isValid(numStr, int)) {
+      output.innerText = convertToRoman(int);
+    }
+  };
